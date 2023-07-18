@@ -1,0 +1,129 @@
+/* Center the form */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Adjust alignment to top */
+  flex-direction: column;
+  min-height: 100vh;
+  width: 70%;
+  margin: 0 auto;
+  background-color: transparent;
+  position: relative;
+  padding-bottom: 50px; /* Add padding-bottom to create space at the bottom */
+  box-sizing: border-box; /* Include padding in the width calculation */
+  /* overflow-y: auto; Hide any overflow from child elements */
+}
+
+body {
+  overflow-y: scroll;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(242, 242, 242, 0), rgb(182, 181, 181));
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+.inner-container {
+  background-color: #bababa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+/* Style the form elements */
+.form-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 2px solid #ced4da;
+  /* margin-bottom: 10px; */
+  background-size: 10px 30px; /* Adjust the background size as needed */
+  padding-right: 60px;
+}
+
+/* Position the "Book a Repair" heading */
+.container h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #535353;
+  color: #ffffff;
+  border: none;
+  transition: background-color 0.3s ease;
+  margin: 0 auto; /* Add margin auto to horizontally center */
+  padding-bottom: 5px;
+  margin-top: 15px;
+}
+
+/* Add hover effect to form buttons */
+.btn-primary:hover {
+  background-color: #00ac1a;
+}
+
+/* Add hover effect to form inputs */
+.form-control:hover {
+  border-color: #92a3ff;
+}
+
+.valid-input {
+  border-color: #00ac1a; /* Green border color for valid input */
+}
+
+/* Add loading spinner */
+.loading {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.loading .spinner-border {
+  color: #000000; /* Set the color to black */
+  width: 6rem;
+  height: 6rem;
+  animation-duration: 3s;
+}
+
+.loading .visually-hidden {
+  color: #000000; /* Set the color to black */
+}
+
+.image-container {
+  text-align: left; /* Adjust text alignment to left */
+  margin-bottom: 20px;
+  padding-right: 20px; /* Adjust padding as needed */
+  padding-bottom: 20px; /* Adjust padding as needed */
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin-top: 20px; /* Adjust margin as needed */
+}

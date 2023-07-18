@@ -1,0 +1,167 @@
+{% extends 'repairs/base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'repairs/contact_form.css' %}"> 
+{% endblock %}
+
+{% block content %}
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>  
+</head>
+
+<div class="container mt-4">
+  
+  <!-- Add the image code here -->
+  <div class="image-container">
+    <img src="{% static 'repairs/images/at-your-service.png' %}" alt="Logo">
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">Book a Repair</h1>
+    </div>
+  </div>
+
+  <form method="POST">
+    {% csrf_token %}
+
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+  </div>
+
+  <!-- Company -->
+  <div class="form-group">
+    <label for="company" class="form-label">Company</label>
+    <select class="form-control" id="company" name="company" required>
+      <option value="">Select a Company</option>
+      <option value="Straighthrough">Straighthrough</option>
+      <option value="Randburg">Randburg</option>
+      <option value="Bedfordview">Bedfordview</option>
+      <option value="Sandton">Sandton</option>
+      <option value="Proline">Proline</option>
+      <option value="FirstHelp">FirstHelp</option>
+      <option value="DCP">DCP</option>
+      <option value="FirstHelp">FirstHelp</option>
+      <option value="FAM">FAM</option>
+      <option value="Greenstone">Greenstone</option>
+      <option value="Daytona / Aston">Daytona / Aston</option>
+      <option value="BGS HQ">BGS HQ</option>
+      <option value="HR">HR</option>
+      <option value="Eeziparts">Eeziparts</option>
+      <option value="Weelee">Weelee</option>
+      <option value="Auction">Auction</option>
+      <option value="UMed">UMed</option>
+      <option value="Emer-G-Med">Emer-G-Med</option>
+      <option value="Rivonia">Rivonia</option>
+      <option value="Sandhurst">Sandhurst</option>
+      <option value="Hallmark">Hallmark</option>
+      <option value="Mile Investments">Mile Investments</option>
+      <option value="Persec">Persec</option>
+      <option value="Bluespec">Bluespec</option>
+      <option value="Moderator">Moderator</option>
+      <option value="Renew-It Group">Renew-It Group</option>
+    </select>
+  </div>
+
+  <!-- Laptop Brand -->
+  <div class="form-group">
+    <label for="brand" class="form-label">Laptop Brand</label>
+    <input type="text" class="form-control" id="brand" name="brand" placeholder="Enter laptop brand" required>
+  </div>
+
+  <!-- Laptop Model -->
+  <div class="form-group">
+    <label for="model" class="form-label">Laptop Model</label>
+    <input type="text" class="form-control" id="model" name="model" placeholder="Enter laptop model" required>
+  </div>
+
+  <!-- Operating System -->
+  <div class="form-group">
+    <label for="os" class="form-label">Operating System</label>
+    <select class="form-control" id="os" name="os" required>
+      <option value="">Select an operating system</option>
+      <option value="Windows">Windows</option>
+      <option value="MacOS">MacOS</option>
+      <option value="Linux">Linux</option>
+    </select>
+  </div>
+
+  <!-- Issue Category -->
+  <div class="form-group">
+    <label for="category" class="form-label">Issue Category</label>
+    <select class="form-control" id="category" name="category" required>
+      <option value="">Select an issue category</option>
+      <option value="Hardware">Hardware</option>
+      <option value="Software">Software</option>
+      <option value="Networking">Networking</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" name="description" rows="5" placeholder="Enter a description of the issue" required></textarea>
+  </div>
+    
+    <!-- Loading spinner -->
+    <div class="loading">
+      <div class="spinner-border text-black" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  $(function() {
+    $('form').on('submit', function() {
+      $('.loading').show();
+    });
+  });
+
+  $(document).ready(function() {
+  var formControls = $('.form-control');
+
+  formControls.on('input', function() {
+
+    if (this.checkValidity()) {
+
+      $(this).addClass('valid-input');
+
+    } else {
+      
+      $(this).removeClass('valid-input');
+
+    }
+  });
+});
+
+  $(function(){
+    $("#company").select2();
+    $("#os").select2();
+    $("#category").select2();
+}); 
+
+</script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'repairs/base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'repairs/confirmation_form.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Confirmation</h4>
+    <p>Thank you for submitting your repair request! We will review your information and get back to you as soon as possible.</p>
+    <hr>
+    <a href="{% url 'contact_form' %}" class="btn btn-primary">Return to the Form</a>
+  </div>
+{% endblock %}

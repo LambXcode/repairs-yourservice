@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Inline CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(88, 88, 88, 0.1);
+        }
+        
+        h1 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #333333;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .thread {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .thread p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <div class="container">
+        <img src="{% static 'repairs/images/at-your-service.png' %}" alt="Company Logo" style="max-width: 100px; margin-bottom: 20px;">
+        <h1>Thank you for contacting us</h1>
+        <p>Dear {{ name }},</p>
+        <p>Thank you for submitting your inquiry. We will get back to you soon.</p>
+        <div class="thread">
+            <h2>Thread of the details:</h2>
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Company:</strong> {{ company }}</p>
+            <p><strong>Laptop Brand:</strong> {{ brand }}</p>
+            <p><strong>Laptop Model:</strong> {{ model }}</p>
+            <p><strong>Operating System:</strong> {{ os }}</p>
+            <p><strong>Issue Category:</strong> {{ category }}</p>
+            <p><strong>Description:</strong> {{ description }}</p>
+        </div>
+        <p>Best regards,</p>
+        <p>IT Team</p>
+    </div>
+</body>
+</html>
